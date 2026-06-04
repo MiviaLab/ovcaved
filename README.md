@@ -4,7 +4,8 @@ This is the official repository associated with the paper:
 
 **Open Vocabulary Context Aware Video Event Detection**
 
-Authors Info: 
+**Authors Info**:
+
 Name: Vincenzo Carletti, Antonio Greco, Mattia Marseglia, Mario Vento
 
 e-mails: vcarletti@unisa.it (V. Carletti); agreco@unisa.it (A. Greco); mmarseglia@unisa.it (M. Marseglia); mvento@unisa.it (M. Vento)
