@@ -6,7 +6,9 @@ This is the official repository associated with the paper:
 
 Authors Info: 
 Name: Vincenzo Carletti, Antonio Greco, Mattia Marseglia, Mario Vento
+
 e-mails: vcarletti@unisa.it (V. Carletti); agreco@unisa.it (A. Greco); mmarseglia@unisa.it (M. Marseglia); mvento@unisa.it (M. Vento)
+
 ORCID(s): 0000-0002-9130-5533 (V. Carletti); 0000-0002-5495-2432 (A. Greco); 0009-0009-0507-6884 (M. Marseglia); 0000-0002-2948-741X (M. Vento)
 
 submitted to *Information Fusion*.
