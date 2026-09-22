@@ -12,7 +12,7 @@ e-mails: vcarletti@unisa.it (V. Carletti); agreco@unisa.it (A. Greco); mmarsegli
 
 ORCID(s): 0000-0002-9130-5533 (V. Carletti); 0000-0002-5495-2432 (A. Greco); 0009-0009-0507-6884 (M. Marseglia); 0000-0002-2948-741X (M. Vento)
 
-submitted to *Information Fusion*.
+submitted to **.
 
 This repository provides the resources related to **Open Vocabulary Context Aware Video Event Detection (OV-CAVED)**, a context-aware and open-vocabulary formulation for surveillance event verification.
 
