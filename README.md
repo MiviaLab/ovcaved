@@ -1,77 +1,64 @@
 # OV-CAVED Resources
 
-This is the official repository associated with the paper:
+Official repository of the paper:
 
 **Open Vocabulary Context Aware Video Event Detection**
+Vincenzo Carletti, Antonio Greco, Mattia Marseglia, Mario Vento
+Department of Information and Electrical Engineering and Applied Mathematics (DIEM), University of Salerno, Italy
 
-**Authors Info**:
+*Submitted to the International Journal of Computer Vision (IJCV).*
 
-Name: Vincenzo Carletti, Antonio Greco, Mattia Marseglia, Mario Vento
+| Author | E-mail | ORCID |
+|---|---|---|
+| Vincenzo Carletti | vcarletti@unisa.it | [0000-0002-9130-5533](https://orcid.org/0000-0002-9130-5533) |
+| Antonio Greco | agreco@unisa.it | [0000-0002-5495-2432](https://orcid.org/0000-0002-5495-2432) |
+| Mattia Marseglia | mmarseglia@unisa.it | [0009-0009-0507-6884](https://orcid.org/0009-0009-0507-6884) |
+| Mario Vento | mvento@unisa.it | [0000-0002-2948-741X](https://orcid.org/0000-0002-2948-741X) |
 
-e-mails: vcarletti@unisa.it (V. Carletti); agreco@unisa.it (A. Greco); mmarseglia@unisa.it (M. Marseglia); mvento@unisa.it (M. Vento)
+> **Status:** this repository is a placeholder. The code and the benchmark will be released upon acceptance of the paper.
 
-ORCID(s): 0000-0002-9130-5533 (V. Carletti); 0000-0002-5495-2432 (A. Greco); 0009-0009-0507-6884 (M. Marseglia); 0000-0002-2948-741X (M. Vento)
+## Overview
 
-submitted to **.
-
-This repository provides the resources related to **Open Vocabulary Context Aware Video Event Detection (OV-CAVED)**, a context-aware and open-vocabulary formulation for surveillance event verification.
-
-OV-CAVED reformulates video anomaly detection by conditioning each detection decision on three complementary sources of information:
+**Open Vocabulary Context Aware Video Event Detection (OV-CAVED)** is a context aware and open vocabulary formulation for surveillance event verification. Each detection decision is conditioned on three complementary sources of information:
 
 - the observed video evidence;
-- the operational context describing the monitored scene;
-- the natural-language query specifying the event of interest.
+- an operational context describing the monitored scene;
+- a natural-language query specifying the event of interest.
 
-Instead of detecting generic abnormality or recognizing a fixed set of anomaly classes, OV-CAVED evaluates whether a user-defined event query is visually present in a video segment under the operational conditions of the monitored scene.
+Instead of detecting generic abnormality or recognizing a fixed set of anomaly classes, OV-CAVED verifies whether a user-defined event is visually present in a video segment under the operational conditions of the monitored scene.
 
-## Repository Content
+## Planned Content
 
-This repository will contain the code of the automatic annotation tool proposed in the paper, organized in the following folder:
+Upon acceptance, this repository will contain:
 
 ```text
-annotation_tool/
+annotation_tool/     # LLM/VLM-based automatic annotation tool
+evaluation/          # zero-shot evaluation protocol (row-level and video-level metrics)
 ```
 
-The `annotation_tool/` folder will include the implementation of the LLM/VLM-assisted annotation pipeline used to generate OV-CAVED-compatible annotations from temporally annotated video anomaly detection datasets.
+### Automatic annotation tool
 
-Given surveillance videos and temporal event annotations, the tool generates the contextual and semantic annotations required by the OV-CAVED framework, including:
+Given surveillance videos and their temporal event annotations (and, optionally, dense video descriptions), the tool generates the annotations required by OV-CAVED:
 
-- structured operational contexts describing the monitored scene;
-- natural-language event queries at different levels of granularity;
-- plausible but absent event queries for hard negative supervision;
-- query-conditioned labels aligned with temporal event supports.
+- structured operational contexts (21 fields in 5 areas) describing the monitored scene;
+- natural-language event queries at three levels of granularity (coarse, mid, fine);
+- plausible absent queries used as hard negatives;
+- query-conditioned labels aligned with the temporal supports of the events.
 
-The annotation tool is designed to reduce the manual effort required to construct context-aware and open-vocabulary surveillance benchmarks. Beyond dataset creation, it can also support practical deployment scenarios by helping operators define operational contexts and events of interest from real surveillance videos.
+The tool is dataset-agnostic and can be applied to any temporally annotated video anomaly detection dataset. Beyond benchmark construction, it can help operators define operational contexts and events of interest for real surveillance deployments.
+
+### Evaluation protocol
+
+Code to reproduce the zero-shot evaluation reported in the paper, including chunk-based querying of the model, row-level metrics (AP, AP_a, precision, recall, F1) and video-level alarm metrics.
 
 ## OV-CAVED UCF-Crime Benchmark
 
-Using the proposed annotation tool, we build **OV-CAVED UCF-Crime**, an OV-CAVED-compliant benchmark derived from the widely used UCF-Crime dataset.
+Using the annotation tool, we build **OV-CAVED UCF-Crime**, an OV-CAVED-compliant benchmark derived from UCF-Crime. Each video is paired with an operational context and with event queries at multiple granularities; test-set queries, temporal supports and contexts are manually reviewed. The benchmark enables the evaluation of context aware event verification at both row level and video level.
 
-Each video is enriched with an operational context and natural-language event queries, enabling the evaluation of context-aware event verification at both chunk level and video level. The benchmark supports the analysis of how operational context, query specificity, and temporal grounding affect open-vocabulary surveillance event detection.
+The benchmark will be released on Zenodo upon acceptance of the paper.
 
-The dataset will be released on Zenodo after paper acceptance.
-
-Dataset link:
-
-```text
-https://zenodo.org/records/20540649?token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6IjY5ZjNhMjU3LTcyY2EtNDcxZC05NWE5LTBiYWIxMzg4MzkwZiIsImRhdGEiOnt9LCJyYW5kb20iOiJkMmFjYjY1YjY5NzgwNDZlNmZkM2NiZjE1YjBlZjljMyJ9.QqCQ0fYv41Haa8hoV1A1H3uRdmtHE_r0HeaN7dOjmjs4MjGgSlbvu0CcislBiGa90Un4hH73CW1xqkyH87Gzxw
-```
-
-## Availability
-
-The code of the automatic annotation tool and the link to the OV-CAVED UCF-Crime benchmark will be made publicly available after acceptance of the paper.
-
-## Main Features
-
-- Automatic generation of OV-CAVED-compatible annotations.
-- Support for temporally annotated video anomaly detection datasets.
-- Structured operational context generation.
-- Multi-granularity event query generation.
-- Plausible absent query generation for hard negative supervision and evaluation.
-- Query-conditioned label generation.
-- Dataset-agnostic design.
-- Support for benchmark construction and surveillance system configuration.
+**Note on third-party data.** OV-CAVED UCF-Crime will contain annotations only. The original videos will not be redistributed and must be obtained from the official [UCF-Crime](https://www.crcv.ucf.edu/projects/real-world/) release, under its terms of use. Dense video descriptions used by the annotation tool are taken from UCA-Crime.
 
 ## Contact
 
-For questions or further information, please contact the authors of the paper.
+For questions, please contact the corresponding author: Mattia Marseglia (mmarseglia@unisa.it).
